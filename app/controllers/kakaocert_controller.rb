@@ -44,9 +44,9 @@ class KakaocertController < ApplicationController
       
       # 수신자 정보
       # 휴대폰번호,성명,생년월일 또는 Ci(연계정보)값 중 택 일
-      "receiverHP" => KakaocertController::KCService._encrypt('01054437896'),
-      "receiverName" => KakaocertController::KCService._encrypt('최상혁'),
-      "receiverBirthday" => KakaocertController::KCService._encrypt('19880301'),
+      "receiverHP" => KCService._encrypt('01012341234'),
+      "receiverName" => KCService._encrypt('홍길동'),
+      "receiverBirthday" => KCService._encrypt('19700101'),
       "ci" => '',
       
       # 인증요청 메시지 제목 - 최대 40자
@@ -54,16 +54,16 @@ class KakaocertController < ApplicationController
       # 인증요청 만료시간 - 최대 1,000(초)까지 입력 가능
       "expireIn" => 1000,
       # 서명 원문 - 최대 40자 까지 입력가능
-      "token" => KakaocertController::KCService._encrypt('본인인증요청토큰'),
+      "token" => KCService._encrypt('본인인증요청토큰'),
       # AppToApp 인증요청 여부
       # true - AppToApp 인증방식, false - Talk Message 인증방식
       'appUseYN' => false,
       # App to App 방식 이용시, 호출할 URL
-      "returnURL" => 'https://kakao.barocert.com'
+      # "returnURL" => 'https://kakao.barocert.com'
     } 
 
     begin
-      @Response = KCService.requestIdentity(KakaocertController::ClientCode, identity)
+      @Response = KCService.requestIdentity(ClientCode, identity)
       render "kakaocert/requestIdentity"
     rescue BarocertException => pe
       @Response = pe
@@ -78,7 +78,7 @@ class KakaocertController < ApplicationController
     receiptId = "02305090230400000010000000000015"
 
     begin
-      @Response = KCService.getIdentityStatus(KakaocertController::ClientCode, receiptId)
+      @Response = KCService.getIdentityStatus(ClientCode, receiptId)
       render "kakaocert/getIdentityStatus"
     rescue BarocertException => pe
       @Response = pe
@@ -94,7 +94,7 @@ class KakaocertController < ApplicationController
     receiptId = "02305090230400000010000000000015"
 
     begin
-      @Response = KCService.verifyIdentity(KakaocertController::ClientCode, receiptId)
+      @Response = KCService.verifyIdentity(ClientCode, receiptId)
       render "kakaocert/verifyIdentity"
     rescue BarocertException => pe
       @Response = pe
@@ -109,9 +109,9 @@ class KakaocertController < ApplicationController
       
       # 수신자 정보
       # 휴대폰번호,성명,생년월일 또는 Ci(연계정보)값 중 택 일
-      "receiverHP" => KakaocertController::KCService._encrypt('01054437896'),
-      "receiverName" => KakaocertController::KCService._encrypt('최상혁'),
-      "receiverBirthday" => KakaocertController::KCService._encrypt('19880301'),
+      "receiverHP" => KCService._encrypt('01012341234'),
+      "receiverName" => KCService._encrypt('홍길동'),
+      "receiverBirthday" => KCService._encrypt('19700101'),
       "ci" => '',
       
       # 인증요청 메시지 제목 - 최대 40자
@@ -119,7 +119,7 @@ class KakaocertController < ApplicationController
       # 인증요청 만료시간 - 최대 1,000(초)까지 입력 가능
       "expireIn" => 1000,
       # 서명 원문 - 원문 2,800자 까지 입력가능
-      "token" => KakaocertController::KCService._encrypt('전자서명단건테스트데이터'),
+      "token" => KCService._encrypt('전자서명단건테스트데이터'),
       # 서명 원문 유형
       # TEXT - 일반 텍스트, HASH - HASH 데이터
       "tokenType" => 'TEXT',
@@ -127,12 +127,12 @@ class KakaocertController < ApplicationController
       # true - AppToApp 인증방식, false - Talk Message 인증방식
       "appUseYN" => false,
       # App to App 방식 이용시, 호출할 URL
-      "returnURL" => 'https://kakao.barocert.com'
+      # "returnURL" => 'https://kakao.barocert.com'
     }
       
 
     begin
-      @Response = KCService.requestSign(KakaocertController::ClientCode,sign)
+      @Response = KCService.requestSign(ClientCode,sign)
       render "kakaocert/requestSign"
     rescue BarocertException => pe
       @Response = pe
@@ -147,7 +147,7 @@ class KakaocertController < ApplicationController
     receiptId = "02305090230400000010000000000011"
 
     begin
-      @Response = KCService.getSignStatus(KakaocertController::ClientCode, receiptId)
+      @Response = KCService.getSignStatus(ClientCode, receiptId)
       render "kakaocert/getSignStatus"
     rescue BarocertException => pe
       @Response = pe
@@ -163,7 +163,7 @@ class KakaocertController < ApplicationController
     receiptId = "02305090230400000010000000000011"
 
     begin
-      @Response = KCService.verifySign(KakaocertController::ClientCode, receiptId)
+      @Response = KCService.verifySign(ClientCode, receiptId)
       render "kakaocert/verifySign"
     rescue BarocertException => pe
       @Response = pe
@@ -178,9 +178,9 @@ class KakaocertController < ApplicationController
       
       # 수신자 정보
       # 휴대폰번호,성명,생년월일 또는 Ci(연계정보)값 중 택 일
-      "receiverHP" => KakaocertController::KCService._encrypt('01054437896'),
-      "receiverName" => KakaocertController::KCService._encrypt('최상혁'),
-      "receiverBirthday" => KakaocertController::KCService._encrypt('19880301'),
+      "receiverHP" => KCService._encrypt('01012341234'),
+      "receiverName" => KCService._encrypt('홍길동'),
+      "receiverBirthday" => KCService._encrypt('19700101'),
       "ci" => '',
       
       # 인증요청 메시지 제목 - 최대 40자
@@ -193,13 +193,13 @@ class KakaocertController < ApplicationController
           # 인증요청 메시지 제목 - 최대 40자
           "reqTitle" => "전자서명복수테스트1",
           # 서명 원문 - 원문 2,800자 까지 입력가능  
-          "token" => KakaocertController::KCService._encrypt('전자서명복수테스트데이터1'),
+          "token" => KCService._encrypt('전자서명복수테스트데이터1'),
         },
         {
           # 인증요청 메시지 제목 - 최대 40자
           "reqTitle" => "전자서명복수테스트2",
           # 서명 원문 - 원문 2,800자 까지 입력가능
-          "token" => KakaocertController::KCService._encrypt('전자서명복수테스트데이터2'),
+          "token" => KCService._encrypt('전자서명복수테스트데이터2'),
         },
       ],
       # 서명 원문 유형
@@ -209,12 +209,12 @@ class KakaocertController < ApplicationController
       # true - AppToApp 인증방식, false - Talk Message 인증방식
       "appUseYN" => false,
       # App to App 방식 이용시, 호출할 URL
-      "returnURL" => 'https://kakao.barocert.com'
+      # "returnURL" => 'https://kakao.barocert.com'
     }
       
 
     begin
-      @Response = KCService.requestMultiSign(KakaocertController::ClientCode,multiSign)
+      @Response = KCService.requestMultiSign(ClientCode,multiSign)
       render "kakaocert/requestMultiSign"
     rescue BarocertException => pe
       @Response = pe
@@ -229,7 +229,7 @@ class KakaocertController < ApplicationController
     receiptId = "02305090230400000010000000000013"
 
     begin
-      @Response = KCService.getMultiSignStatus(KakaocertController::ClientCode, receiptId)
+      @Response = KCService.getMultiSignStatus(ClientCode, receiptId)
       render "kakaocert/getSignStatus"
     rescue BarocertException => pe
       @Response = pe
@@ -245,7 +245,7 @@ class KakaocertController < ApplicationController
     receiptId = "02305090230400000010000000000013"
 
     begin
-      @Response = KCService.verifyMultiSign(KakaocertController::ClientCode, receiptId)
+      @Response = KCService.verifyMultiSign(ClientCode, receiptId)
       render "kakaocert/verifyMultiSign"
     rescue BarocertException => pe
       @Response = pe
@@ -260,37 +260,37 @@ class KakaocertController < ApplicationController
     cms = {
       # 수신자 정보
       # 휴대폰번호,성명,생년월일 또는 Ci(연계정보)값 중 택 일
-			"receiverHP" => KakaocertController::KCService._encrypt('01054437896'),
-			"receiverName" => KakaocertController::KCService._encrypt('최상혁'),
-			"receiverBirthday" => KakaocertController::KCService._encrypt('19880301'),
+			"receiverHP" => KCService._encrypt('01012341234'),
+			"receiverName" => KCService._encrypt('홍길동'),
+			"receiverBirthday" => KCService._encrypt('19700101'),
 			"ci" => '',
       # 인증요청 메시지 제목 - 최대 40자
 			"reqTitle" => '인증요청 메시지 제목란',
       # 인증요청 만료시간 - 최대 1,000(초)까지 입력 가능
 			"expireIn" => 1000,
       # 청구기관명 - 최대 100자
-			"requestCorp" => KakaocertController::KCService._encrypt("링크허브"),
+			"requestCorp" => KCService._encrypt("링크허브"),
       # 출금은행명 - 최대 100자
-			"bankName" => KakaocertController::KCService._encrypt("국민은행"),
+			"bankName" => KCService._encrypt("국민은행"),
       # 출금계좌번호 - 최대 32자
-			"bankAccountNum" => KakaocertController::KCService._encrypt("19-321442-1231"),
+			"bankAccountNum" => KCService._encrypt("19-321442-1231"),
       # 출금계좌 예금주명 - 최대 100자
-			"bankAccountName" => KakaocertController::KCService._encrypt("최상혁"),
+			"bankAccountName" => KCService._encrypt("홍길동"),
       # 출금계좌 예금주 생년월일 - 8자
-			"bankAccountBirthday" => KakaocertController::KCService._encrypt("19880301"),
+			"bankAccountBirthday" => KCService._encrypt("19700101"),
       # 출금유형
       # CMS - 출금동의용, FIRM - 펌뱅킹, GIRO - 지로용
-			"bankServiceType" => KakaocertController::KCService._encrypt("CMS"),
+			"bankServiceType" => KCService._encrypt("CMS"),
       # AppToApp 인증요청 여부
       # true - AppToApp 인증방식, false - Talk Message 인증방식
 			"appUseYN" => false,
       # App to App 방식 이용시, 에러시 호출할 URL
-			"returnURL" => 'https://kakao.barocert.com'
+			# "returnURL" => 'https://kakao.barocert.com'
 		}
 
 
     begin
-      @Response = KCService.requestCMS(KakaocertController::ClientCode,cms)
+      @Response = KCService.requestCMS(ClientCode,cms)
       render "kakaocert/requestCMS"
     rescue BarocertException => pe
       @Response = pe
@@ -305,7 +305,7 @@ class KakaocertController < ApplicationController
     receiptId = "02305090230400000010000000000014"
 
     begin
-      @Response = KCService.getCMSStatus(KakaocertController::ClientCode, receiptId)
+      @Response = KCService.getCMSStatus(ClientCode, receiptId)
       render "kakaocert/getCMSStatus"
     rescue BarocertException => pe
       @Response = pe
@@ -321,7 +321,7 @@ class KakaocertController < ApplicationController
     receiptId = "02305090230400000010000000000014"
 
     begin
-      @Response = KCService.verifyCMS(KakaocertController::ClientCode, receiptId)
+      @Response = KCService.verifyCMS(ClientCode, receiptId)
       render "kakaocert/verifyCMS"
     rescue BarocertException => pe
       @Response = pe
