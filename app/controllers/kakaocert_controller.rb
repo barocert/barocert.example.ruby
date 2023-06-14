@@ -2,9 +2,9 @@
 #
 # Kakaocert API Ruby On Rails SDK Example
 #
-# 업데이트 일자 : 2023-05-04
+# 업데이트 일자 : 2023-06-14
 # 연동기술지원 연락처 : 1600-9854 
-# 연동기술지원 이메일 : code@linkhubcorp.com
+# 연동기술지원 이메일 : dev@linkhubcorp.com
 #
 ################################################################################
 
@@ -41,13 +41,13 @@ class KakaocertController < ApplicationController
 
     # 본인인증 요청정보 객체
     identity = {
-      
-      # 수신자 정보
-      # 휴대폰번호,성명,생년월일 또는 Ci(연계정보)값 중 택 일
+
+      # 수신자 휴대폰번호 - 11자 (하이픈 제외)
       "receiverHP" => KCService._encrypt('01012341234'),
+      # 수신자 성명 - 80자
       "receiverName" => KCService._encrypt('홍길동'),
+      # 수신자 생년월일 - 8자 (yyyyMMdd)
       "receiverBirthday" => KCService._encrypt('19700101'),
-      "ci" => '',
       
       # 인증요청 메시지 제목 - 최대 40자
       "reqTitle" => '인증요청 메시지 제목란',
@@ -107,12 +107,12 @@ class KakaocertController < ApplicationController
 
     sign = {
       
-      # 수신자 정보
-      # 휴대폰번호,성명,생년월일 또는 Ci(연계정보)값 중 택 일
+      # 수신자 휴대폰번호 - 11자 (하이픈 제외)
       "receiverHP" => KCService._encrypt('01012341234'),
+      # 수신자 성명 - 80자
       "receiverName" => KCService._encrypt('홍길동'),
+      # 수신자 생년월일 - 8자 (yyyyMMdd)
       "receiverBirthday" => KCService._encrypt('19700101'),
-      "ci" => '',
       
       # 인증요청 메시지 제목 - 최대 40자
       "reqTitle" => '인증요청 메시지 제목란',
@@ -175,13 +175,13 @@ class KakaocertController < ApplicationController
   def requestMultiSign
 
     multiSign = {
-      
-      # 수신자 정보
-      # 휴대폰번호,성명,생년월일 또는 Ci(연계정보)값 중 택 일
+
+      # 수신자 휴대폰번호 - 11자 (하이픈 제외)
       "receiverHP" => KCService._encrypt('01012341234'),
+      # 수신자 성명 - 80자
       "receiverName" => KCService._encrypt('홍길동'),
+      # 수신자 생년월일 - 8자 (yyyyMMdd)
       "receiverBirthday" => KCService._encrypt('19700101'),
-      "ci" => '',
       
       # 인증요청 메시지 제목 - 최대 40자
       "reqTitle" => '인증요청 메시지 제목란',
@@ -258,12 +258,14 @@ class KakaocertController < ApplicationController
 
     # 자동이체 출금동의 요청정보 객체
     cms = {
-      # 수신자 정보
-      # 휴대폰번호,성명,생년월일 또는 Ci(연계정보)값 중 택 일
+
+      # 수신자 휴대폰번호 - 11자 (하이픈 제외)
 			"receiverHP" => KCService._encrypt('01012341234'),
+      # 수신자 성명 - 80자
 			"receiverName" => KCService._encrypt('홍길동'),
+      # 수신자 생년월일 - 8자 (yyyyMMdd)
 			"receiverBirthday" => KCService._encrypt('19700101'),
-			"ci" => '',
+      
       # 인증요청 메시지 제목 - 최대 40자
 			"reqTitle" => '인증요청 메시지 제목란',
       # 인증요청 만료시간 - 최대 1,000(초)까지 입력 가능
