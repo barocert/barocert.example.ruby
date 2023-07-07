@@ -37,6 +37,7 @@ class KakaocertController < ApplicationController
   KCService.setUseLocalTimeYN(true)
 
   # 카카오톡 사용자에게 본인인증 전자서명을 요청합니다.
+  # https://developers.barocert.com/reference/kakao/java/identity/api#RequestIdentity
   def requestIdentity
 
     # 본인인증 요청정보 객체
@@ -72,6 +73,7 @@ class KakaocertController < ApplicationController
   end
 
   # 본인인증 요청시 반환된 접수아이디를 통해 서명 상태를 확인합니다.
+  # https://developers.barocert.com/reference/kakao/java/identity/api#GetIdentityStatus
   def getIdentityStatus
 
     # 본인인증 요청시 반환받은 접수아이디
@@ -88,6 +90,7 @@ class KakaocertController < ApplicationController
 
   # 본인인증 요청시 반환된 접수아이디를 통해 본인인증 서명을 검증합니다. 
   # 검증하기 API는 완료된 전자서명 요청당 1회만 요청 가능하며, 사용자가 서명을 완료후 유효시간(10분)이내에만 요청가능 합니다.
+  # https://developers.barocert.com/reference/kakao/java/identity/api#VerifyIdentity
   def verifyIdentity
 
     # 본인인증 요청시 반환받은 접수아이디
@@ -102,7 +105,8 @@ class KakaocertController < ApplicationController
     end
   end
 
-  # 전자서명 인증을 요청합니다.
+  # 전자서명 인증을 요청합니다. (단건)
+  # https://developers.barocert.com/reference/kakao/java/sign/api-single#RequestSign
   def requestSign
 
     sign = {
@@ -141,6 +145,7 @@ class KakaocertController < ApplicationController
   end
 
   # 전자서명 요청시 반환된 접수아이디를 통해 서명 상태를 확인합니다. (단건)
+  # https://developers.barocert.com/reference/kakao/java/sign/api-single#GetSignStatus
   def getSignStatus
 
     # 전자서명 요청시 반환받은 접수아이디
@@ -157,6 +162,7 @@ class KakaocertController < ApplicationController
 
   # 전자서명 요청시 반환된 접수아이디를 통해 서명을 검증합니다. (단건)
   # 검증하기 API는 완료된 전자서명 요청당 1회만 요청 가능하며, 사용자가 서명을 완료후 유효시간(10분)이내에만 요청가능 합니다.
+  # https://developers.barocert.com/reference/kakao/java/sign/api-single#VerifySign
   def verifySign
 
     # 전자서명 요청시 반환받은 접수아이디
@@ -172,6 +178,7 @@ class KakaocertController < ApplicationController
   end
 
   # 카카오톡 사용자에게 전자서명을 요청합니다.(복수)
+  # https://developers.barocert.com/reference/kakao/java/sign/api-multi#RequestMultiSign
   def requestMultiSign
 
     multiSign = {
@@ -223,6 +230,7 @@ class KakaocertController < ApplicationController
   end
 
   # 전자서명 요청시 반환된 접수아이디를 통해 서명 상태를 확인합니다. (복수)
+  # https://developers.barocert.com/reference/kakao/java/sign/api-multi#GetMultiSignStatus
   def getMultiSignStatus
 
     # 전자서명 요청시 반환받은 접수아이디
@@ -239,6 +247,7 @@ class KakaocertController < ApplicationController
 
   # 전자서명 요청시 반환된 접수아이디를 통해 서명을 검증합니다. (복수)
   # 검증하기 API는 완료된 전자서명 요청당 1회만 요청 가능하며, 사용자가 서명을 완료후 유효시간(10분)이내에만 요청가능 합니다.
+  # https://developers.barocert.com/reference/kakao/java/sign/api-multi#VerifyMultiSign
   def verifyMultiSign
 
     # 전자서명 요청시 반환받은 접수아이디
@@ -254,6 +263,7 @@ class KakaocertController < ApplicationController
   end
 
   # 카카오톡 사용자에게 자동이체 출금동의 전자서명을 요청합니다.
+  # https://developers.barocert.com/reference/kakao/java/cms/api#RequestCMS
   def requestCMS
 
     # 자동이체 출금동의 요청정보 객체
@@ -301,6 +311,7 @@ class KakaocertController < ApplicationController
   end
 
   # 자동이체 출금동의 요청시 반환된 접수아이디를 통해 서명 상태를 확인합니다.
+  # https://developers.barocert.com/reference/kakao/java/cms/api#GetCMSStatus
   def getCMSStatus
 
     # 자동이체 출금동의 요청시 반환받은 접수아이디
@@ -317,6 +328,7 @@ class KakaocertController < ApplicationController
 
   # 자동이체 출금동의 요청시 반환된 접수아이디를 통해 서명을 검증합니다.
   # 검증하기 API는 완료된 전자서명 요청당 1회만 요청 가능하며, 사용자가 서명을 완료후 유효시간(10분)이내에만 요청가능 합니다.
+  # https://developers.barocert.com/reference/kakao/java/cms/api#VerifyCMS
   def verifyCMS
 
     # 자동이체 출금동의 요청시 반환받은 접수아이디
