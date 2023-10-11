@@ -33,9 +33,6 @@ class KakaocertController < ApplicationController
   # 카카오써트 API 서비스 고정 IP 사용여부, true-사용, false-미사용, 기본값(false)
   KCService.setUseStaticIP(false)
 
-  # 로컬시스템 시간 사요영부, true-사용, false-미사용, 기본값(true)
-  KCService.setUseLocalTimeYN(true)
-
   # 카카오톡 사용자에게 본인인증 전자서명을 요청합니다.
   # https://developers.barocert.com/reference/kakao/java/identity/api#RequestIdentity
   def requestIdentity
