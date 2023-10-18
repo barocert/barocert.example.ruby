@@ -2,9 +2,9 @@
 #
 # Kakaocert API Ruby On Rails SDK Example
 #
-# 업데이트 일자 : 2023-06-14
+# 업데이트 일자 : 2023-10-17
 # 연동기술지원 연락처 : 1600-9854 
-# 연동기술지원 이메일 : dev@linkhubcorp.com
+# 연동기술지원 이메일 : code@linkhubcorp.com
 #
 ################################################################################
 
@@ -27,32 +27,32 @@ class KakaocertController < ApplicationController
       KakaocertController::SecretKey
   )
 
-  # 인증토큰 IP제한기능 사용여부, true-권장
+  # 인증토큰 IP제한기능 사용여부, true-사용, false-미사용, 기본값(true)
   KCService.setIpRestrictOnOff(true)
 
   # 카카오써트 API 서비스 고정 IP 사용여부, true-사용, false-미사용, 기본값(false)
   KCService.setUseStaticIP(false)
 
-  # 카카오톡 사용자에게 본인인증 전자서명을 요청합니다.
-  # https://developers.barocert.com/reference/kakao/java/identity/api#RequestIdentity
+  # 카카오톡 이용자에게 본인인증을 요청합니다.
+  # https://developers.barocert.com/reference/kakao/ruby/identity/api#RequestIdentity
   def requestIdentity
 
     # 본인인증 요청정보 객체
     identity = {
 
       # 수신자 휴대폰번호 - 11자 (하이픈 제외)
-      "receiverHP" => KCService._encrypt('01012341234'),
+      "receiverHP" => KCService._encrypt('01067668440'),
       # 수신자 성명 - 80자
-      "receiverName" => KCService._encrypt('홍길동'),
+      "receiverName" => KCService._encrypt('정우석'),
       # 수신자 생년월일 - 8자 (yyyyMMdd)
-      "receiverBirthday" => KCService._encrypt('19700101'),
+      "receiverBirthday" => KCService._encrypt('19900911'),
       
       # 인증요청 메시지 제목 - 최대 40자
-      "reqTitle" => '인증요청 메시지 제목란',
+      "reqTitle" => '본인인증 요청 메시지 제목',
       # 인증요청 만료시간 - 최대 1,000(초)까지 입력 가능
       "expireIn" => 1000,
       # 서명 원문 - 최대 40자 까지 입력가능
-      "token" => KCService._encrypt('본인인증요청토큰'),
+      "token" => KCService._encrypt('본인인증 요청 토큰'),
       # AppToApp 인증요청 여부
       # true - AppToApp 인증방식, false - Talk Message 인증방식
       'appUseYN' => false,
@@ -69,8 +69,8 @@ class KakaocertController < ApplicationController
     end
   end
 
-  # 본인인증 요청시 반환된 접수아이디를 통해 서명 상태를 확인합니다.
-  # https://developers.barocert.com/reference/kakao/java/identity/api#GetIdentityStatus
+  # 본인인증 요청 후 반환받은 접수아이디로 본인인증 진행 상태를 확인합니다.
+  # https://developers.barocert.com/reference/kakao/ruby/identity/api#GetIdentityStatus
   def getIdentityStatus
 
     # 본인인증 요청시 반환받은 접수아이디
@@ -85,9 +85,11 @@ class KakaocertController < ApplicationController
     end
   end
 
-  # 본인인증 요청시 반환된 접수아이디를 통해 본인인증 서명을 검증합니다. 
-  # 검증하기 API는 완료된 전자서명 요청당 1회만 요청 가능하며, 사용자가 서명을 완료후 유효시간(10분)이내에만 요청가능 합니다.
-  # https://developers.barocert.com/reference/kakao/java/identity/api#VerifyIdentity
+  # 완료된 전자서명을 검증하고 전자서명값(signedData)을 반환 받습니다.
+  # 반환받은 전자서명값(signedData)과 [1. RequestIdentity] 함수 호출에 입력한 Token의 동일 여부를 확인하여 이용자의 본인인증 검증을 완료합니다.
+  # 카카오 보안정책에 따라 검증 API는 1회만 호출할 수 있습니다. 재시도시 오류가 반환됩니다.
+  # 전자서명 완료일시로부터 10분 이후에 검증 API를 호출하면 오류가 반환됩니다.
+  # https://developers.barocert.com/reference/kakao/ruby/identity/api#VerifyIdentity
   def verifyIdentity
 
     # 본인인증 요청시 반환받은 접수아이디
@@ -102,25 +104,25 @@ class KakaocertController < ApplicationController
     end
   end
 
-  # 전자서명 인증을 요청합니다. (단건)
-  # https://developers.barocert.com/reference/kakao/java/sign/api-single#RequestSign
+  # 카카오톡 이용자에게 단건(1건) 문서의 전자서명을 요청합니다.
+  # https://developers.barocert.com/reference/kakao/ruby/sign/api-single#RequestSign
   def requestSign
 
     sign = {
       
       # 수신자 휴대폰번호 - 11자 (하이픈 제외)
-      "receiverHP" => KCService._encrypt('01012341234'),
+      "receiverHP" => KCService._encrypt('01067668440'),
       # 수신자 성명 - 80자
-      "receiverName" => KCService._encrypt('홍길동'),
+      "receiverName" => KCService._encrypt('정우석'),
       # 수신자 생년월일 - 8자 (yyyyMMdd)
-      "receiverBirthday" => KCService._encrypt('19700101'),
+      "receiverBirthday" => KCService._encrypt('19900911'),
       
       # 인증요청 메시지 제목 - 최대 40자
-      "reqTitle" => '인증요청 메시지 제목란',
+      "reqTitle" => '전자서명(단건) 요청 메시지 제목',
       # 인증요청 만료시간 - 최대 1,000(초)까지 입력 가능
       "expireIn" => 1000,
       # 서명 원문 - 원문 2,800자 까지 입력가능
-      "token" => KCService._encrypt('전자서명단건테스트데이터'),
+      "token" => KCService._encrypt('전자서명(단건) 요청 토큰'),
       # 서명 원문 유형
       # TEXT - 일반 텍스트, HASH - HASH 데이터
       "tokenType" => 'TEXT',
@@ -141,8 +143,8 @@ class KakaocertController < ApplicationController
     end
   end
 
-  # 전자서명 요청시 반환된 접수아이디를 통해 서명 상태를 확인합니다. (단건)
-  # https://developers.barocert.com/reference/kakao/java/sign/api-single#GetSignStatus
+  # 전자서명(단건) 요청 후 반환받은 접수아이디로 인증 진행 상태를 확인합니다.
+  # https://developers.barocert.com/reference/kakao/ruby/sign/api-single#GetSignStatus
   def getSignStatus
 
     # 전자서명 요청시 반환받은 접수아이디
@@ -157,9 +159,10 @@ class KakaocertController < ApplicationController
     end
   end
 
-  # 전자서명 요청시 반환된 접수아이디를 통해 서명을 검증합니다. (단건)
-  # 검증하기 API는 완료된 전자서명 요청당 1회만 요청 가능하며, 사용자가 서명을 완료후 유효시간(10분)이내에만 요청가능 합니다.
-  # https://developers.barocert.com/reference/kakao/java/sign/api-single#VerifySign
+  # 완료된 전자서명을 검증하고 전자서명값(signedData)을 반환 받습니다.
+  # 카카오 보안정책에 따라 검증 API는 1회만 호출할 수 있습니다. 재시도시 오류가 반환됩니다.
+  # 전자서명 완료일시로부터 10분 이후에 검증 API를 호출하면 오류가 반환됩니다.
+  # https://developers.barocert.com/reference/kakao/ruby/sign/api-single#VerifySign
   def verifySign
 
     # 전자서명 요청시 반환받은 접수아이디
@@ -174,36 +177,36 @@ class KakaocertController < ApplicationController
     end
   end
 
-  # 카카오톡 사용자에게 전자서명을 요청합니다.(복수)
-  # https://developers.barocert.com/reference/kakao/java/sign/api-multi#RequestMultiSign
+  # 카카오톡 이용자에게 복수(최대 20건) 문서의 전자서명을 요청합니다.
+  # https://developers.barocert.com/reference/kakao/ruby/sign/api-multi#RequestMultiSign
   def requestMultiSign
 
     multiSign = {
 
       # 수신자 휴대폰번호 - 11자 (하이픈 제외)
-      "receiverHP" => KCService._encrypt('01012341234'),
+      "receiverHP" => KCService._encrypt('01067668440'),
       # 수신자 성명 - 80자
-      "receiverName" => KCService._encrypt('홍길동'),
+      "receiverName" => KCService._encrypt('정우석'),
       # 수신자 생년월일 - 8자 (yyyyMMdd)
-      "receiverBirthday" => KCService._encrypt('19700101'),
+      "receiverBirthday" => KCService._encrypt('19900911'),
       
       # 인증요청 메시지 제목 - 최대 40자
-      "reqTitle" => '인증요청 메시지 제목란',
+      "reqTitle" => '전자서명(복수) 요청 메시지 제목',
       # 인증요청 만료시간 - 최대 1,000(초)까지 입력 가능
       "expireIn" => 1000,
       # 서명 원문 - 원문 2,800자 까지 입력가능
       "tokens" => [
         {
           # 인증요청 메시지 제목 - 최대 40자
-          "reqTitle" => "전자서명복수테스트1",
+          "reqTitle" => "전자서명(복수) 요청 타이틀1",
           # 서명 원문 - 원문 2,800자 까지 입력가능  
-          "token" => KCService._encrypt('전자서명복수테스트데이터1'),
+          "token" => KCService._encrypt('전자서명(복수) 요청 토큰1'),
         },
         {
           # 인증요청 메시지 제목 - 최대 40자
-          "reqTitle" => "전자서명복수테스트2",
+          "reqTitle" => "전자서명(복수) 요청 타이틀2",
           # 서명 원문 - 원문 2,800자 까지 입력가능
-          "token" => KCService._encrypt('전자서명복수테스트데이터2'),
+          "token" => KCService._encrypt('전자서명(복수) 요청 토큰2'),
         },
       ],
       # 서명 원문 유형
@@ -215,7 +218,6 @@ class KakaocertController < ApplicationController
       # App to App 방식 이용시, 호출할 URL
       # "returnURL" => 'https://kakao.barocert.com'
     }
-      
 
     begin
       @Response = KCService.requestMultiSign(ClientCode,multiSign)
@@ -226,8 +228,8 @@ class KakaocertController < ApplicationController
     end
   end
 
-  # 전자서명 요청시 반환된 접수아이디를 통해 서명 상태를 확인합니다. (복수)
-  # https://developers.barocert.com/reference/kakao/java/sign/api-multi#GetMultiSignStatus
+  # 전자서명(복수) 요청 후 반환받은 접수아이디로 인증 진행 상태를 확인합니다.
+  # https://developers.barocert.com/reference/kakao/ruby/sign/api-multi#GetMultiSignStatus
   def getMultiSignStatus
 
     # 전자서명 요청시 반환받은 접수아이디
@@ -242,9 +244,10 @@ class KakaocertController < ApplicationController
     end
   end
 
-  # 전자서명 요청시 반환된 접수아이디를 통해 서명을 검증합니다. (복수)
-  # 검증하기 API는 완료된 전자서명 요청당 1회만 요청 가능하며, 사용자가 서명을 완료후 유효시간(10분)이내에만 요청가능 합니다.
-  # https://developers.barocert.com/reference/kakao/java/sign/api-multi#VerifyMultiSign
+  # 완료된 전자서명을 검증하고 전자서명값(signedData)을 반환 받습니다.
+  # 카카오 보안정책에 따라 검증 API는 1회만 호출할 수 있습니다. 재시도시 오류가 반환됩니다.
+  # 전자서명 완료일시로부터 10분 이후에 검증 API를 호출하면 오류가 반환됩니다.
+  # https://developers.barocert.com/reference/kakao/ruby/sign/api-multi#VerifyMultiSign
   def verifyMultiSign
 
     # 전자서명 요청시 반환받은 접수아이디
@@ -259,22 +262,22 @@ class KakaocertController < ApplicationController
     end
   end
 
-  # 카카오톡 사용자에게 자동이체 출금동의 전자서명을 요청합니다.
-  # https://developers.barocert.com/reference/kakao/java/cms/api#RequestCMS
+  # 카카오톡 이용자에게 자동이체 출금동의를 요청합니다.
+  # https://developers.barocert.com/reference/kakao/ruby/cms/api#RequestCMS
   def requestCMS
 
     # 자동이체 출금동의 요청정보 객체
     cms = {
 
       # 수신자 휴대폰번호 - 11자 (하이픈 제외)
-			"receiverHP" => KCService._encrypt('01012341234'),
+			"receiverHP" => KCService._encrypt('01067668440'),
       # 수신자 성명 - 80자
-			"receiverName" => KCService._encrypt('홍길동'),
+			"receiverName" => KCService._encrypt('정우석'),
       # 수신자 생년월일 - 8자 (yyyyMMdd)
-			"receiverBirthday" => KCService._encrypt('19700101'),
+			"receiverBirthday" => KCService._encrypt('19900911'),
       
       # 인증요청 메시지 제목 - 최대 40자
-			"reqTitle" => '인증요청 메시지 제목란',
+			"reqTitle" => '출금동의 요청 메시지 제목',
       # 인증요청 만료시간 - 최대 1,000(초)까지 입력 가능
 			"expireIn" => 1000,
       # 청구기관명 - 최대 100자
@@ -284,9 +287,9 @@ class KakaocertController < ApplicationController
       # 출금계좌번호 - 최대 32자
 			"bankAccountNum" => KCService._encrypt("19-321442-1231"),
       # 출금계좌 예금주명 - 최대 100자
-			"bankAccountName" => KCService._encrypt("홍길동"),
+			"bankAccountName" => KCService._encrypt("정우석"),
       # 출금계좌 예금주 생년월일 - 8자
-			"bankAccountBirthday" => KCService._encrypt("19700101"),
+			"bankAccountBirthday" => KCService._encrypt("19900911"),
       # 출금유형
       # CMS - 출금동의용, FIRM - 펌뱅킹, GIRO - 지로용
 			"bankServiceType" => KCService._encrypt("CMS"),
@@ -297,7 +300,6 @@ class KakaocertController < ApplicationController
 			# "returnURL" => 'https://kakao.barocert.com'
 		}
 
-
     begin
       @Response = KCService.requestCMS(ClientCode,cms)
       render "kakaocert/requestCMS"
@@ -307,8 +309,8 @@ class KakaocertController < ApplicationController
     end
   end
 
-  # 자동이체 출금동의 요청시 반환된 접수아이디를 통해 서명 상태를 확인합니다.
-  # https://developers.barocert.com/reference/kakao/java/cms/api#GetCMSStatus
+  # 자동이체 출금동의 요청 후 반환받은 접수아이디로 인증 진행 상태를 확인합니다.
+  # https://developers.barocert.com/reference/kakao/ruby/cms/api#GetCMSStatus
   def getCMSStatus
 
     # 자동이체 출금동의 요청시 반환받은 접수아이디
@@ -323,9 +325,10 @@ class KakaocertController < ApplicationController
     end
   end
 
-  # 자동이체 출금동의 요청시 반환된 접수아이디를 통해 서명을 검증합니다.
-  # 검증하기 API는 완료된 전자서명 요청당 1회만 요청 가능하며, 사용자가 서명을 완료후 유효시간(10분)이내에만 요청가능 합니다.
-  # https://developers.barocert.com/reference/kakao/java/cms/api#VerifyCMS
+  # 완료된 전자서명을 검증하고 전자서명값(signedData)을 반환 받습니다.
+  # 카카오 보안정책에 따라 검증 API는 1회만 호출할 수 있습니다. 재시도시 오류가 반환됩니다.
+  # 전자서명 완료일시로부터 10분 이후에 검증 API를 호출하면 오류가 반환됩니다.
+  # https://developers.barocert.com/reference/kakao/ruby/cms/api#VerifyCMS
   def verifyCMS
 
     # 자동이체 출금동의 요청시 반환받은 접수아이디
@@ -340,5 +343,22 @@ class KakaocertController < ApplicationController
     end
   end
 
+  # 완료된 전자서명을 검증하고 전자서명 데이터 전문(signedData)을 반환 받습니다.
+  # 카카오 보안정책에 따라 검증 API는 1회만 호출할 수 있습니다. 재시도시 오류가 반환됩니다.
+  # 전자서명 완료일시로부터 10분 이후에 검증 API를 호출하면 오류가 반환됩니다.
+  # https://developers.barocert.com/reference/kakao/ruby/login/api#VerifyLogin
+  def verifyLogin
+
+    # 간편로그인 요청시 반환받은 트랜잭션 아이디
+    txId = "02305090230400000010000000000014"
+
+    begin
+      @Response = KCService.verifyLogin(ClientCode, txId)
+      render "kakaocert/verifyLogin"
+    rescue BarocertException => pe
+      @Response = pe
+      render "home/exception"
+    end
+  end
 
 end
