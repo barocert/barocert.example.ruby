@@ -333,7 +333,7 @@ class PasscertController < ApplicationController
   # https://developers.barocert.com/reference/pass/ruby/login/api#RequestLogin
   def requestLogin
 
-    # 본인인증 요청정보 객체
+    # 간편로그인 요청정보 객체
     login = {
 
       # 수신자 휴대폰번호 - 11자 (하이픈 제외)
@@ -403,7 +403,7 @@ class PasscertController < ApplicationController
   # https://developers.barocert.com/reference/pass/ruby/login/api#VerifyLogin
   def verifyLogin
 
-    # 본인인증 요청시 반환받은 접수아이디
+    # 간편로그인 요청시 반환받은 접수아이디
     receiptId = "02305090230400000010000000000015"
 
     loginVerify = {
