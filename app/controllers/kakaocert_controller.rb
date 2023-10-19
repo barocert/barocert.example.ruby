@@ -41,11 +41,11 @@ class KakaocertController < ApplicationController
     identity = {
 
       # 수신자 휴대폰번호 - 11자 (하이픈 제외)
-      "receiverHP" => KCService._encrypt('01067668440'),
+      "receiverHP" => KCService._encrypt('01012341234'),
       # 수신자 성명 - 80자
-      "receiverName" => KCService._encrypt('정우석'),
+      "receiverName" => KCService._encrypt('홍길동'),
       # 수신자 생년월일 - 8자 (yyyyMMdd)
-      "receiverBirthday" => KCService._encrypt('19900911'),
+      "receiverBirthday" => KCService._encrypt('19700101'),
       
       # 인증요청 메시지 제목 - 최대 40자
       "reqTitle" => '본인인증 요청 메시지 제목',
@@ -111,11 +111,11 @@ class KakaocertController < ApplicationController
     sign = {
       
       # 수신자 휴대폰번호 - 11자 (하이픈 제외)
-      "receiverHP" => KCService._encrypt('01067668440'),
+      "receiverHP" => KCService._encrypt('01012341234'),
       # 수신자 성명 - 80자
-      "receiverName" => KCService._encrypt('정우석'),
+      "receiverName" => KCService._encrypt('홍길동'),
       # 수신자 생년월일 - 8자 (yyyyMMdd)
-      "receiverBirthday" => KCService._encrypt('19900911'),
+      "receiverBirthday" => KCService._encrypt('19700101'),
       
       # 인증요청 메시지 제목 - 최대 40자
       "reqTitle" => '전자서명(단건) 요청 메시지 제목',
@@ -184,11 +184,11 @@ class KakaocertController < ApplicationController
     multiSign = {
 
       # 수신자 휴대폰번호 - 11자 (하이픈 제외)
-      "receiverHP" => KCService._encrypt('01067668440'),
+      "receiverHP" => KCService._encrypt('01012341234'),
       # 수신자 성명 - 80자
-      "receiverName" => KCService._encrypt('정우석'),
+      "receiverName" => KCService._encrypt('홍길동'),
       # 수신자 생년월일 - 8자 (yyyyMMdd)
-      "receiverBirthday" => KCService._encrypt('19900911'),
+      "receiverBirthday" => KCService._encrypt('19700101'),
       
       # 인증요청 메시지 제목 - 최대 40자
       "reqTitle" => '전자서명(복수) 요청 메시지 제목',
@@ -270,11 +270,11 @@ class KakaocertController < ApplicationController
     cms = {
 
       # 수신자 휴대폰번호 - 11자 (하이픈 제외)
-			"receiverHP" => KCService._encrypt('01067668440'),
+			"receiverHP" => KCService._encrypt('01012341234'),
       # 수신자 성명 - 80자
-			"receiverName" => KCService._encrypt('정우석'),
+			"receiverName" => KCService._encrypt('홍길동'),
       # 수신자 생년월일 - 8자 (yyyyMMdd)
-			"receiverBirthday" => KCService._encrypt('19900911'),
+			"receiverBirthday" => KCService._encrypt('19700101'),
       
       # 인증요청 메시지 제목 - 최대 40자
 			"reqTitle" => '출금동의 요청 메시지 제목',
@@ -287,9 +287,9 @@ class KakaocertController < ApplicationController
       # 출금계좌번호 - 최대 32자
 			"bankAccountNum" => KCService._encrypt("19-321442-1231"),
       # 출금계좌 예금주명 - 최대 100자
-			"bankAccountName" => KCService._encrypt("정우석"),
+			"bankAccountName" => KCService._encrypt("홍길동"),
       # 출금계좌 예금주 생년월일 - 8자
-			"bankAccountBirthday" => KCService._encrypt("19900911"),
+			"bankAccountBirthday" => KCService._encrypt("19700101"),
       # 출금유형
       # CMS - 출금동의용, FIRM - 펌뱅킹, GIRO - 지로용
 			"bankServiceType" => KCService._encrypt("CMS"),
@@ -350,7 +350,7 @@ class KakaocertController < ApplicationController
   def verifyLogin
 
     # 간편로그인 요청시 반환받은 트랜잭션 아이디
-    txId = "02305090230400000010000000000014"
+    txId = "01432a68fd-d92c-4c70-9888-ee42b7ce4d25"
 
     begin
       @Response = KCService.verifyLogin(ClientCode, txId)

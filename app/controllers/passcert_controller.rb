@@ -111,13 +111,13 @@ class PasscertController < ApplicationController
     # 본인인증 요청시 반환받은 접수아이디
     receiptId = "02305090230400000010000000000015"
 
-    IdentityVerify = {
-			"receiverHP" => PCService._encrypt('01067668440'),
-			"receiverName" => PCService._encrypt('정우석')
+    identityVerify = {
+			"receiverHP" => PCService._encrypt('01012341234'),
+			"receiverName" => PCService._encrypt('홍길동')
 		}
 
     begin
-      @Response = PCService.verifyIdentity(ClientCode, receiptId, IdentityVerify)
+      @Response = PCService.verifyIdentity(ClientCode, receiptId, identityVerify)
       render "passcert/verifyIdentity"
     rescue BarocertException => pe
       @Response = pe
@@ -213,13 +213,13 @@ class PasscertController < ApplicationController
     # 전자서명 요청시 반환받은 접수아이디
     receiptId = "02305090230400000010000000000011"
 
-    SignVerify = {
-			"receiverHP" => PCService._encrypt('01067668440'),
-			"receiverName" => PCService._encrypt('정우석')
+    signVerify = {
+			"receiverHP" => PCService._encrypt('01012341234'),
+			"receiverName" => PCService._encrypt('홍길동')
 		}
 
     begin
-      @Response = PCService.verifySign(ClientCode, receiptId, SignVerify)
+      @Response = PCService.verifySign(ClientCode, receiptId, signVerify)
       render "passcert/verifySign"
     rescue BarocertException => pe
       @Response = pe
@@ -254,7 +254,6 @@ class PasscertController < ApplicationController
       "userAgreementYN" => true,
       # 사용자 정보 포함 여부
       "receiverInfoYN" => true,
-
       # 출금은행명 - 최대 100자
 			"bankName" => PCService._encrypt("국민은행"),
       # 출금계좌번호 - 최대 31자
@@ -316,13 +315,13 @@ class PasscertController < ApplicationController
     # 자동이체 출금동의 요청시 반환받은 접수아이디
     receiptId = "02305090230400000010000000000014"
 
-    CMSVerify = {
-			"receiverHP" => PCService._encrypt('01067668440'),
-			"receiverName" => PCService._encrypt('정우석')
+    cmsVerify = {
+			"receiverHP" => PCService._encrypt('01012341234'),
+			"receiverName" => PCService._encrypt('홍길동')
 		}
 
     begin
-      @Response = PCService.verifyCMS(ClientCode, receiptId, CMSVerify)
+      @Response = PCService.verifyCMS(ClientCode, receiptId, cmsVerify)
       render "passcert/verifyCMS"
     rescue BarocertException => pe
       @Response = pe
@@ -407,13 +406,13 @@ class PasscertController < ApplicationController
     # 본인인증 요청시 반환받은 접수아이디
     receiptId = "02305090230400000010000000000015"
 
-    LoginVerify = {
-			"receiverHP" => PCService._encrypt('01067668440'),
-			"receiverName" => PCService._encrypt('정우석')
+    loginVerify = {
+			"receiverHP" => PCService._encrypt('01012341234'),
+			"receiverName" => PCService._encrypt('홍길동')
 		}
 
     begin
-      @Response = PCService.verifyLogin(ClientCode, receiptId, LoginVerify)
+      @Response = PCService.verifyLogin(ClientCode, receiptId, loginVerify)
       render "passcert/verifyLogin"
     rescue BarocertException => pe
       @Response = pe
