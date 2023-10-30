@@ -125,7 +125,7 @@ class NavercertController < ApplicationController
       # 인증요청 메시지 제목 - 최대 40자
       "reqTitle" => '전자서명(단건) 요청 메시지 제목',
       # 인증요청 메시지 - 최대 500자
-      "reqMessage" => NCService._encrypt("전자서명 인증요청 메시지"),
+      "reqMessage" => NCService._encrypt("전자서명 요청 메시지"),
       # 고객센터 연락처 - 최대 12자
       "callCenterNum" => '1600-9854',
       # 인증요청 만료시간 - 최대 1,000(초)까지 입력 가능
@@ -211,7 +211,7 @@ class NavercertController < ApplicationController
       "expireIn" => 1000,
 
       # 인증요청 메시지 - 최대 500자
-      "reqMessage" => NCService._encrypt("전자서명 인증요청 메시지"),
+      "reqMessage" => NCService._encrypt("전자서명 요청 메시지"),
 
       # 개별문서 등록 - 최대 50 건
       # 서명 원문 - 원문 2,800자 까지 입력가능
