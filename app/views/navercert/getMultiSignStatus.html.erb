@@ -1,0 +1,24 @@
+<div id="content">
+  <p class="heading1">Barocert SDK Ruby On Rails Example</p>
+  <br/>
+  <fieldset class="fieldset1">
+    <legend><%= request.env['PATH_INFO'] %></legend>
+    <ul>
+      <li>ReceiptID (접수 아이디) : <%= @Response["receiptID"] %></li>
+      <li>ClientCode (이용기관 코드) : <%= @Response["clientCode"] %></li>
+      <li>State (상태코드) : <%= @Response["state"] %></li>
+      <li>ExpireIn (요청 만료시간) : <%= @Response["expireIn"] %></li>
+      <li>CallCenterName (이용기관 명) : <%= @Response["callCenterName"] %></li>
+      <li>CallCenterNum (이용기관 연락처) : <%= @Response["callCenterNum"] %></li>
+      <li>ReqTitle (인증요청 메시지 제목) : <%= @Response["reqTitle"] %></li>
+      <% @Response["tokenTypes"].each_with_index do |tokenType, index| %>
+          <li>TokenType (원문 구분) : <%= tokenType %></li>
+      <% end %>
+      <li>ExpireDT (서명만료일시) : <%= @Response["expireDT"] %></li>
+      <li>DeviceOSType (모바일장비 유형) : <%= @Response["deviceOSType"] %></li>
+      <li>Scheme (앱스킴) : <%= @Response["scheme"] %></li>
+      <li>ReturnURL (복귀 URL) : <%= @Response["returnURL"] %></li>
+      <li>AppUseYN (앱사용유무) : <%= @Response["appUseYN"] %></li>
+    </ul>
+  </fieldset>
+</div>

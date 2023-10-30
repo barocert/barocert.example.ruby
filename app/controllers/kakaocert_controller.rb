@@ -237,7 +237,7 @@ class KakaocertController < ApplicationController
 
     begin
       @Response = KCService.getMultiSignStatus(ClientCode, receiptId)
-      render "kakaocert/getSignStatus"
+      render "kakaocert/getMultiSignStatus"
     rescue BarocertException => pe
       @Response = pe
       render "home/exception"

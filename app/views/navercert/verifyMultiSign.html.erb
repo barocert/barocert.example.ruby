@@ -1,0 +1,26 @@
+<div id="content">
+  <p class="heading1">Barocert SDK Ruby On Rails Example</p>
+  <br/>
+  <fieldset class="fieldset1">
+    <legend><%= request.env['PATH_INFO'] %></legend>
+    <ul>
+      <li>ReceiptID (접수아이디) : <%= @Response['receiptID'] %></li>
+      <li>State (상태) : <%= @Response['state'] %></li>
+      <li>ReceiverName (수신자 성명) : <%= @Response['receiverName'] %></li>
+      <li>ReceiverYear (수신자 출생년도) : <%= @Response['receiverYear'] %></li>
+      <li>ReceiverDay (수신자 출생월일) : <%= @Response['receiverDay'] %></li>
+      <li>ReceiverHP (수신자 휴대폰번호) : <%= @Response['receiverHP'] %></li>
+      <li>ReceiverGender (수신자 성별) : <%= @Response['receiverGender'] %></li>
+      <li>ReceiverEmail (수신자 이메일) : <%= @Response['receiverEmail'] %></li>
+      <li>ReceiverForeign (외국인 여부) : <%= @Response['receiverForeign'] %></li>
+      <% @Response["multiSignedData"].each_with_index do |signedData, index| %>
+        <fieldset class="fieldset2">
+          <ul>
+            <li>SignedData (전자서명 데이터 전문) : <%= signedData %></li>
+          </ul>
+        </fieldset>
+      <% end %>
+      <li>Ci (연계정보) : <%= @Response['ci'] %></li>
+    </ul>
+  </fieldset>
+</div>

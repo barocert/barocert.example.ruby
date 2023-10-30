@@ -19,6 +19,18 @@ Rails.application.routes.draw do
 
   get "/KakaocertExample/verifyLogin" => 'kakaocert#verifyLogin', via: [:get]
 
+  get "/NavercertExample/requestIdentity" => 'navercert#requestIdentity', via: [:get]
+  get "/NavercertExample/getIdentityStatus" => 'navercert#getIdentityStatus', via: [:get]
+  get "/NavercertExample/verifyIdentity" => 'navercert#verifyIdentity', via: [:get]
+
+  get "/NavercertExample/requestSign" => 'navercert#requestSign', via: [:get]
+  get "/NavercertExample/getSignStatus" => 'navercert#getSignStatus', via: [:get]
+  get "/NavercertExample/verifySign" => 'navercert#verifySign', via: [:get]
+  
+  get "/NavercertExample/requestMultiSign" => 'navercert#requestMultiSign', via: [:get]
+  get "/NavercertExample/getMultiSignStatus" => 'navercert#getMultiSignStatus', via: [:get]
+  get "/NavercertExample/verifyMultiSign" => 'navercert#verifyMultiSign', via: [:get]
+
   get "/PasscertExample/requestIdentity" => 'passcert#requestIdentity', via: [:get]
   get "/PasscertExample/getIdentityStatus" => 'passcert#getIdentityStatus', via: [:get]
   get "/PasscertExample/verifyIdentity" => 'passcert#verifyIdentity', via: [:get]
