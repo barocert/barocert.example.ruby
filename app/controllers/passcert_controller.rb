@@ -2,7 +2,7 @@
 #
 # Passcert API Ruby On Rails SDK Example
 #
-# 업데이트 일자 : 2023-10-17
+# 업데이트 일자 : 2023-11-06
 # 연동기술지원 연락처 : 1600-9854 
 # 연동기술지원 이메일 : code@linkhubcorp.com
 #
@@ -49,14 +49,14 @@ class PasscertController < ApplicationController
       
       # 인증요청 메시지 제목 - 최대 40자
       "reqTitle" => '본인인증 요청 메시지 제목',
-      # 인증요청 메시지 내용 - 최대 500자
-      "reqMessage" => PCService._encrypt('본인인증 요청 메시지 내용'),
+      # 인증요청 메시지 - 최대 500자
+      "reqMessage" => PCService._encrypt('본인인증 요청 메시지'),
       # 고객센터 연락처 - 최대 12자
       "callCenterNum" => '1600-9854',
       # 인증요청 만료시간 - 최대 1,000(초)까지 입력 가능
       "expireIn" => 1000,
       # 서명 원문 - 최대 2,800자
-      "token" => PCService._encrypt('본인인증 요청 토큰'),
+      "token" => PCService._encrypt('본인인증 요청 원문'),
       
       # 사용자 동의 필요 여부
       "userAgreementYN" => true,
@@ -140,14 +140,14 @@ class PasscertController < ApplicationController
       
       # 인증요청 메시지 제목 - 최대 40자
       "reqTitle" => '전자서명 요청 메시지 제목',
-      # 인증요청 메시지 내용 - 최대 500자
-      "reqMessage" => PCService._encrypt('전자서명 요청 메시지 내용'),
+      # 인증요청 메시지 - 최대 500자
+      "reqMessage" => PCService._encrypt('전자서명 요청 메시지'),
       # 고객센터 연락처 - 최대 12자
       "callCenterNum" => '1600-9854',
       # 인증요청 만료시간 - 최대 1,000(초)까지 입력 가능
       "expireIn" => 1000,
       # 서명 원문 - 원문 2,800자 까지 입력가능
-      "token" => PCService._encrypt('전자서명 요청 토큰'),
+      "token" => PCService._encrypt('전자서명 요청 원문'),
       # 서명 원문 유형
       # 'TEXT' - 일반 텍스트, 'HASH' - HASH 데이터, 'URL' - URL 데이터
       # 원본데이터(originalTypeCode, originalURL, originalFormatCode) 입력시 'TEXT'사용 불가
@@ -242,9 +242,9 @@ class PasscertController < ApplicationController
 			"receiverBirthday" => PCService._encrypt('19700101'),
       
       # 인증요청 메시지 제목 - 최대 40자
-			"reqTitle" => '출금동의 메시지 제목',
-      # 인증요청 메시지 내용 - 최대 500자
-      "reqMessage" => PCService._encrypt('출금동의 메시지 내용'),
+			"reqTitle" => '출금동의 요청 메시지 제목',
+      # 인증요청 메시지 - 최대 500자
+      "reqMessage" => PCService._encrypt('출금동의 요청 메시지'),
       # 고객센터 연락처 - 최대 12자
       "callCenterNum" => '1600-9854',
       # 인증요청 만료시간 - 최대 1,000(초)까지 입력 가능
@@ -345,14 +345,14 @@ class PasscertController < ApplicationController
       
       # 인증요청 메시지 제목 - 최대 40자
       "reqTitle" => '간편로그인 요청 메시지 제목',
-      # 인증요청 메시지 내용 - 최대 500자
-      "reqMessage" => PCService._encrypt('간편로그인 요청 메시지 내용'),
+      # 인증요청 메시지 - 최대 500자
+      "reqMessage" => PCService._encrypt('간편로그인 요청 메시지'),
       # 고객센터 연락처 - 최대 12자
       "callCenterNum" => '1600-9854',
       # 인증요청 만료시간 - 최대 1,000(초)까지 입력 가능
       "expireIn" => 1000,
       # 서명 원문 - 최대 2,800자
-      "token" => PCService._encrypt('간편로그인 요청 토큰'),
+      "token" => PCService._encrypt('간편로그인 요청 원문'),
       
       # 사용자 동의 필요 여부
       "userAgreementYN" => true,
