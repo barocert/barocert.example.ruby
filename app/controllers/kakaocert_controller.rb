@@ -50,7 +50,7 @@ class KakaocertController < ApplicationController
       # 인증요청 메시지 제목 - 최대 40자
       "reqTitle" => '본인인증 요청 메시지 제목',
       # 커스텀 메시지 - 최대 500자
-      "extraMessage" => '본인인증 커스텀 메시지',
+      "extraMessage" => KCService._encrypt('본인인증 커스텀 메시지'),
       # 인증요청 만료시간 - 최대 1,000(초)까지 입력 가능
       "expireIn" => 1000,
       # 서명 원문 - 최대 40자 까지 입력가능
@@ -122,7 +122,7 @@ class KakaocertController < ApplicationController
       # 서명 요청 제목 - 최대 40자
       "signTitle" => '전자서명(단건) 서명 요청 제목',
       # 커스텀 메시지 - 최대 500자
-      "extraMessage" => '전자서명(단건) 커스텀 메시지',
+      "extraMessage" => KCService._encrypt('전자서명(단건) 커스텀 메시지'),
       # 인증요청 만료시간 - 최대 1,000(초)까지 입력 가능
       "expireIn" => 1000,
       # 서명 원문 - 원문 2,800자 까지 입력가능
@@ -197,7 +197,7 @@ class KakaocertController < ApplicationController
       # 인증요청 메시지 제목 - 최대 40자
       "reqTitle" => '전자서명(복수) 요청 메시지 제목',
       # 커스텀 메시지 - 최대 500자
-      "extraMessage" => '전자서명(복수) 커스텀 메시지',
+      "extraMessage" => KCService._encrypt('전자서명(복수) 커스텀 메시지'),
       # 인증요청 만료시간 - 최대 1,000(초)까지 입력 가능
       "expireIn" => 1000,
       # 서명 원문 - 원문 2,800자 까지 입력가능
@@ -284,6 +284,8 @@ class KakaocertController < ApplicationController
       
       # 인증요청 메시지 제목 - 최대 40자
 			"reqTitle" => '출금동의 요청 메시지 제목',
+      # 커스텀 메시지 - 최대 500자
+      "extraMessage" => KCService._encrypt('출금동의 커스텀 메시지'),
       # 인증요청 만료시간 - 최대 1,000(초)까지 입력 가능
 			"expireIn" => 1000,
       # 청구기관명 - 최대 100자
