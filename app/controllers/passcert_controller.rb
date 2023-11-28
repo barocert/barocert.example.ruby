@@ -90,10 +90,10 @@ class PasscertController < ApplicationController
   def getIdentityStatus
 
     # 본인인증 요청시 반환받은 접수아이디
-    receiptId = "02305090230400000010000000000015"
+    receiptID = "02305090230400000010000000000015"
 
     begin
-      @Response = PCService.getIdentityStatus(ClientCode, receiptId)
+      @Response = PCService.getIdentityStatus(ClientCode, receiptID)
       render "passcert/getIdentityStatus"
     rescue BarocertException => pe
       @Response = pe
@@ -109,7 +109,7 @@ class PasscertController < ApplicationController
   def verifyIdentity
 
     # 본인인증 요청시 반환받은 접수아이디
-    receiptId = "02305090230400000010000000000015"
+    receiptID = "02305090230400000010000000000015"
 
     identityVerify = {
 			"receiverHP" => PCService._encrypt('01012341234'),
@@ -117,7 +117,7 @@ class PasscertController < ApplicationController
 		}
 
     begin
-      @Response = PCService.verifyIdentity(ClientCode, receiptId, identityVerify)
+      @Response = PCService.verifyIdentity(ClientCode, receiptID, identityVerify)
       render "passcert/verifyIdentity"
     rescue BarocertException => pe
       @Response = pe
@@ -193,10 +193,10 @@ class PasscertController < ApplicationController
   def getSignStatus
 
     # 전자서명 요청시 반환받은 접수아이디
-    receiptId = "02305090230400000010000000000011"
+    receiptID = "02305090230400000010000000000011"
 
     begin
-      @Response = PCService.getSignStatus(ClientCode, receiptId)
+      @Response = PCService.getSignStatus(ClientCode, receiptID)
       render "passcert/getSignStatus"
     rescue BarocertException => pe
       @Response = pe
@@ -211,7 +211,7 @@ class PasscertController < ApplicationController
   def verifySign
 
     # 전자서명 요청시 반환받은 접수아이디
-    receiptId = "02305090230400000010000000000011"
+    receiptID = "02305090230400000010000000000011"
 
     signVerify = {
 			"receiverHP" => PCService._encrypt('01012341234'),
@@ -219,7 +219,7 @@ class PasscertController < ApplicationController
 		}
 
     begin
-      @Response = PCService.verifySign(ClientCode, receiptId, signVerify)
+      @Response = PCService.verifySign(ClientCode, receiptID, signVerify)
       render "passcert/verifySign"
     rescue BarocertException => pe
       @Response = pe
@@ -295,10 +295,10 @@ class PasscertController < ApplicationController
   def getCMSStatus
 
     # 자동이체 출금동의 요청시 반환받은 접수아이디
-    receiptId = "02305090230400000010000000000014"
+    receiptID = "02305090230400000010000000000014"
 
     begin
-      @Response = PCService.getCMSStatus(ClientCode, receiptId)
+      @Response = PCService.getCMSStatus(ClientCode, receiptID)
       render "passcert/getCMSStatus"
     rescue BarocertException => pe
       @Response = pe
@@ -313,7 +313,7 @@ class PasscertController < ApplicationController
   def verifyCMS
 
     # 자동이체 출금동의 요청시 반환받은 접수아이디
-    receiptId = "02305090230400000010000000000014"
+    receiptID = "02305090230400000010000000000014"
 
     cmsVerify = {
 			"receiverHP" => PCService._encrypt('01012341234'),
@@ -321,7 +321,7 @@ class PasscertController < ApplicationController
 		}
 
     begin
-      @Response = PCService.verifyCMS(ClientCode, receiptId, cmsVerify)
+      @Response = PCService.verifyCMS(ClientCode, receiptID, cmsVerify)
       render "passcert/verifyCMS"
     rescue BarocertException => pe
       @Response = pe
@@ -386,10 +386,10 @@ class PasscertController < ApplicationController
   def getLoginStatus
 
     # 간편로그인 요청시 반환받은 접수아이디
-    receiptId = "02305090230400000010000000000015"
+    receiptID = "02305090230400000010000000000015"
 
     begin
-      @Response = PCService.getLoginStatus(ClientCode, receiptId)
+      @Response = PCService.getLoginStatus(ClientCode, receiptID)
       render "passcert/getLoginStatus"
     rescue BarocertException => pe
       @Response = pe
@@ -404,7 +404,7 @@ class PasscertController < ApplicationController
   def verifyLogin
 
     # 간편로그인 요청시 반환받은 접수아이디
-    receiptId = "02305090230400000010000000000015"
+    receiptID = "02305090230400000010000000000015"
 
     loginVerify = {
 			"receiverHP" => PCService._encrypt('01012341234'),
@@ -412,7 +412,7 @@ class PasscertController < ApplicationController
 		}
 
     begin
-      @Response = PCService.verifyLogin(ClientCode, receiptId, loginVerify)
+      @Response = PCService.verifyLogin(ClientCode, receiptID, loginVerify)
       render "passcert/verifyLogin"
     rescue BarocertException => pe
       @Response = pe

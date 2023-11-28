@@ -74,10 +74,10 @@ class KakaocertController < ApplicationController
   def getIdentityStatus
 
     # 본인인증 요청시 반환받은 접수아이디
-    receiptId = "02305090230400000010000000000015"
+    receiptID = "02305090230400000010000000000015"
 
     begin
-      @Response = KCService.getIdentityStatus(ClientCode, receiptId)
+      @Response = KCService.getIdentityStatus(ClientCode, receiptID)
       render "kakaocert/getIdentityStatus"
     rescue BarocertException => pe
       @Response = pe
@@ -93,10 +93,10 @@ class KakaocertController < ApplicationController
   def verifyIdentity
 
     # 본인인증 요청시 반환받은 접수아이디
-    receiptId = "02305090230400000010000000000015"
+    receiptID = "02305090230400000010000000000015"
 
     begin
-      @Response = KCService.verifyIdentity(ClientCode, receiptId)
+      @Response = KCService.verifyIdentity(ClientCode, receiptID)
       render "kakaocert/verifyIdentity"
     rescue BarocertException => pe
       @Response = pe
@@ -148,10 +148,10 @@ class KakaocertController < ApplicationController
   def getSignStatus
 
     # 전자서명 요청시 반환받은 접수아이디
-    receiptId = "02305090230400000010000000000011"
+    receiptID = "02305090230400000010000000000011"
 
     begin
-      @Response = KCService.getSignStatus(ClientCode, receiptId)
+      @Response = KCService.getSignStatus(ClientCode, receiptID)
       render "kakaocert/getSignStatus"
     rescue BarocertException => pe
       @Response = pe
@@ -166,10 +166,10 @@ class KakaocertController < ApplicationController
   def verifySign
 
     # 전자서명 요청시 반환받은 접수아이디
-    receiptId = "02305090230400000010000000000011"
+    receiptID = "02305090230400000010000000000011"
 
     begin
-      @Response = KCService.verifySign(ClientCode, receiptId)
+      @Response = KCService.verifySign(ClientCode, receiptID)
       render "kakaocert/verifySign"
     rescue BarocertException => pe
       @Response = pe
@@ -233,10 +233,10 @@ class KakaocertController < ApplicationController
   def getMultiSignStatus
 
     # 전자서명 요청시 반환받은 접수아이디
-    receiptId = "02305090230400000010000000000013"
+    receiptID = "02305090230400000010000000000013"
 
     begin
-      @Response = KCService.getMultiSignStatus(ClientCode, receiptId)
+      @Response = KCService.getMultiSignStatus(ClientCode, receiptID)
       render "kakaocert/getMultiSignStatus"
     rescue BarocertException => pe
       @Response = pe
@@ -251,10 +251,10 @@ class KakaocertController < ApplicationController
   def verifyMultiSign
 
     # 전자서명 요청시 반환받은 접수아이디
-    receiptId = "02305090230400000010000000000013"
+    receiptID = "02305090230400000010000000000013"
 
     begin
-      @Response = KCService.verifyMultiSign(ClientCode, receiptId)
+      @Response = KCService.verifyMultiSign(ClientCode, receiptID)
       render "kakaocert/verifyMultiSign"
     rescue BarocertException => pe
       @Response = pe
@@ -314,10 +314,10 @@ class KakaocertController < ApplicationController
   def getCMSStatus
 
     # 자동이체 출금동의 요청시 반환받은 접수아이디
-    receiptId = "02305090230400000010000000000014"
+    receiptID = "02305090230400000010000000000014"
 
     begin
-      @Response = KCService.getCMSStatus(ClientCode, receiptId)
+      @Response = KCService.getCMSStatus(ClientCode, receiptID)
       render "kakaocert/getCMSStatus"
     rescue BarocertException => pe
       @Response = pe
@@ -332,10 +332,10 @@ class KakaocertController < ApplicationController
   def verifyCMS
 
     # 자동이체 출금동의 요청시 반환받은 접수아이디
-    receiptId = "02305090230400000010000000000014"
+    receiptID = "02305090230400000010000000000014"
 
     begin
-      @Response = KCService.verifyCMS(ClientCode, receiptId)
+      @Response = KCService.verifyCMS(ClientCode, receiptID)
       render "kakaocert/verifyCMS"
     rescue BarocertException => pe
       @Response = pe

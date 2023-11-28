@@ -80,10 +80,10 @@ class NavercertController < ApplicationController
   def getIdentityStatus
 
     # 본인인증 요청시 반환받은 접수아이디
-    receiptId = "02310300230900000210000000000009"
+    receiptID = "02310300230900000210000000000009"
 
     begin
-      @Response = NCService.getIdentityStatus(ClientCode, receiptId)
+      @Response = NCService.getIdentityStatus(ClientCode, receiptID)
       render "navercert/getIdentityStatus"
     rescue BarocertException => pe
       @Response = pe
@@ -98,10 +98,10 @@ class NavercertController < ApplicationController
   def verifyIdentity
 
     # 본인인증 요청시 반환받은 접수아이디
-    receiptId = "02310300230900000210000000000009"
+    receiptID = "02310300230900000210000000000009"
 
     begin
-      @Response = NCService.verifyIdentity(ClientCode, receiptId)
+      @Response = NCService.verifyIdentity(ClientCode, receiptID)
       render "navercert/verifyIdentity"
     rescue BarocertException => pe
       @Response = pe
@@ -162,10 +162,10 @@ class NavercertController < ApplicationController
   def getSignStatus
 
     # 전자서명 요청시 반환받은 접수아이디
-    receiptId = "02310300230900000210000000000010"
+    receiptID = "02310300230900000210000000000010"
 
     begin
-      @Response = NCService.getSignStatus(ClientCode, receiptId)
+      @Response = NCService.getSignStatus(ClientCode, receiptID)
       render "navercert/getSignStatus"
     rescue BarocertException => pe
       @Response = pe
@@ -179,10 +179,10 @@ class NavercertController < ApplicationController
   def verifySign
 
     # 전자서명 요청시 반환받은 접수아이디
-    receiptId = "02310300230900000210000000000010"
+    receiptID = "02310300230900000210000000000010"
 
     begin
-      @Response = NCService.verifySign(ClientCode, receiptId)
+      @Response = NCService.verifySign(ClientCode, receiptID)
       render "navercert/verifySign"
     rescue BarocertException => pe
       @Response = pe
@@ -257,10 +257,10 @@ class NavercertController < ApplicationController
   def getMultiSignStatus
 
     # 전자서명 요청시 반환받은 접수아이디
-    receiptId = "02310300230900000210000000000012"
+    receiptID = "02310300230900000210000000000012"
 
     begin
-      @Response = NCService.getMultiSignStatus(ClientCode, receiptId)
+      @Response = NCService.getMultiSignStatus(ClientCode, receiptID)
       render "navercert/getMultiSignStatus"
     rescue BarocertException => pe
       @Response = pe
@@ -274,10 +274,10 @@ class NavercertController < ApplicationController
   def verifyMultiSign
 
     # 전자서명 요청시 반환받은 접수아이디
-    receiptId = "02310300230900000210000000000012"
+    receiptID = "02310300230900000210000000000012"
 
     begin
-      @Response = NCService.verifyMultiSign(ClientCode, receiptId)
+      @Response = NCService.verifyMultiSign(ClientCode, receiptID)
       render "navercert/verifyMultiSign"
     rescue BarocertException => pe
       @Response = pe
