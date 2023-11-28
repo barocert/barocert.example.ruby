@@ -2,7 +2,7 @@
 #
 # Kakaocert API Ruby On Rails SDK Example
 #
-# 업데이트 일자 : 2023-11-06
+# 업데이트 일자 : 2023-11-28
 # 연동기술지원 연락처 : 1600-9854 
 # 연동기술지원 이메일 : code@linkhubcorp.com
 #
@@ -49,6 +49,8 @@ class KakaocertController < ApplicationController
       
       # 인증요청 메시지 제목 - 최대 40자
       "reqTitle" => '본인인증 요청 메시지 제목',
+      # 커스텀 메시지 - 최대 500자
+      "extraMessage" => '본인인증 커스텀 메시지',
       # 인증요청 만료시간 - 최대 1,000(초)까지 입력 가능
       "expireIn" => 1000,
       # 서명 원문 - 최대 40자 까지 입력가능
@@ -117,8 +119,10 @@ class KakaocertController < ApplicationController
       # 수신자 생년월일 - 8자 (yyyyMMdd)
       "receiverBirthday" => KCService._encrypt('19700101'),
       
-      # 인증요청 메시지 제목 - 최대 40자
-      "reqTitle" => '전자서명(단건) 요청 메시지 제목',
+      # 서명 요청 제목 - 최대 40자
+      "signTitle" => '전자서명(단건) 서명 요청 제목',
+      # 커스텀 메시지 - 최대 500자
+      "extraMessage" => '전자서명(단건) 커스텀 메시지',
       # 인증요청 만료시간 - 최대 1,000(초)까지 입력 가능
       "expireIn" => 1000,
       # 서명 원문 - 원문 2,800자 까지 입력가능
@@ -192,19 +196,21 @@ class KakaocertController < ApplicationController
       
       # 인증요청 메시지 제목 - 최대 40자
       "reqTitle" => '전자서명(복수) 요청 메시지 제목',
+      # 커스텀 메시지 - 최대 500자
+      "extraMessage" => '전자서명(복수) 커스텀 메시지',
       # 인증요청 만료시간 - 최대 1,000(초)까지 입력 가능
       "expireIn" => 1000,
       # 서명 원문 - 원문 2,800자 까지 입력가능
       "tokens" => [
         {
-          # 인증요청 메시지 제목 - 최대 40자
-          "reqTitle" => "전자서명(복수) 요청 메시지 제목 1",
+          # 서명 요청 제목 - 최대 40자
+          "signTitle" => "전자서명(복수) 서명 요청 제목 1",
           # 서명 원문 - 원문 2,800자 까지 입력가능  
           "token" => KCService._encrypt('전자서명(복수) 요청 원문 1'),
         },
         {
-          # 인증요청 메시지 제목 - 최대 40자
-          "reqTitle" => "전자서명(복수) 요청 메시지 제목 2",
+          # 서명 요청 제목 - 최대 40자
+          "signTitle" => "전자서명(복수) 서명 요청 제목 2",
           # 서명 원문 - 원문 2,800자 까지 입력가능
           "token" => KCService._encrypt('전자서명(복수) 요청 원문 2'),
         },
