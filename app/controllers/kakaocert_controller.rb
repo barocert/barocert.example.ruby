@@ -276,36 +276,36 @@ class KakaocertController < ApplicationController
     cms = {
 
       # 수신자 휴대폰번호 - 11자 (하이픈 제외)
-			"receiverHP" => KCService._encrypt('01012341234'),
+      "receiverHP" => KCService._encrypt('01012341234'),
       # 수신자 성명 - 80자
-			"receiverName" => KCService._encrypt('홍길동'),
+      "receiverName" => KCService._encrypt('홍길동'),
       # 수신자 생년월일 - 8자 (yyyyMMdd)
-			"receiverBirthday" => KCService._encrypt('19700101'),
-      
+      "receiverBirthday" => KCService._encrypt('19700101'),
+
       # 인증요청 메시지 제목 - 최대 40자
-			"reqTitle" => '출금동의 요청 메시지 제목',
+      "reqTitle" => '출금동의 요청 메시지 제목',
       # 커스텀 메시지 - 최대 500자
       "extraMessage" => KCService._encrypt('출금동의 커스텀 메시지'),
       # 인증요청 만료시간 - 최대 1,000(초)까지 입력 가능
-			"expireIn" => 1000,
+      "expireIn" => 1000,
       # 청구기관명 - 최대 100자
-			"requestCorp" => KCService._encrypt("링크허브"),
+      "requestCorp" => KCService._encrypt("링크허브"),
       # 출금은행명 - 최대 100자
-			"bankName" => KCService._encrypt("국민은행"),
+      "bankName" => KCService._encrypt("국민은행"),
       # 출금계좌번호 - 최대 32자
-			"bankAccountNum" => KCService._encrypt("19-321442-1231"),
+      "bankAccountNum" => KCService._encrypt("19-321442-1231"),
       # 출금계좌 예금주명 - 최대 100자
-			"bankAccountName" => KCService._encrypt("홍길동"),
+      "bankAccountName" => KCService._encrypt("홍길동"),
       # 출금계좌 예금주 생년월일 - 8자
-			"bankAccountBirthday" => KCService._encrypt("19700101"),
+      "bankAccountBirthday" => KCService._encrypt("19700101"),
       # 출금유형
       # CMS - 출금동의용, FIRM - 펌뱅킹, GIRO - 지로용
-			"bankServiceType" => KCService._encrypt("CMS"),
+      "bankServiceType" => KCService._encrypt("CMS"),
       # AppToApp 인증요청 여부
       # true - AppToApp 인증방식, false - Talk Message 인증방식
-			"appUseYN" => false,
+      "appUseYN" => false,
       # App to App 방식 이용시, 에러시 호출할 URL
-			# "returnURL" => 'https://kakao.barocert.com'
+      # "returnURL" => 'https://kakao.barocert.com'
 		}
 
     begin
