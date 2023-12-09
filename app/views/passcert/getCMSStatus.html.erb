@@ -7,22 +7,10 @@
       <li>ClientCode (이용기관 코드) : <%= @Response["clientCode"] %></li>  
       <li>ReceiptID (접수 아이디) : <%= @Response["receiptID"] %></li>
       <li>State (상태코드) : <%= @Response["state"] %></li>
-      <li>ExpireIn (요청 만료시간) : <%= @Response["expireIn"] %></li>
-      <li>CallCenterName (이용기관 명) : <%= @Response["callCenterName"] %></li>
-      <li>CallCenterNum (이용기관 연락처) : <%= @Response["callCenterNum"] %></li>
-      <li>ReqTitle (인증요청 메시지 제목) : <%= @Response["reqTitle"] %></li>
-      <li>ReqMessage (인증요청 메시지 내용) : <%= @Response["reqMessage"] %></li>
       <li>RequestDT (서명요청일시) : <%= @Response["requestDT"] %></li>
       <li>CompleteDT (서명완료일시) : <%= @Response["completeDT"] %></li>
       <li>ExpireDT (서명만료일시) : <%= @Response["expireDT"] %></li>
       <li>RejectDT (서명거절일시) : <%= @Response["rejectDT"] %></li>
-      <li>TokenType (원문 구분) : <%= @Response["tokenType"] %></li>
-      <li>UserAgreementYN (사용자동의필요여부) : <%= @Response["userAgreementYN"] %></li>
-      <li>ReceiverInfoYN (사용자정보포함여부) : <%= @Response["receiverInfoYN"] %></li>
-      <li>TelcoType (통신사유형) : <%= @Response["telcoType"] %></li>
-      <li>DeviceOSType (모바일장비 유형) : <%= @Response["deviceOSType"] %></li>
-      <li>Scheme (앱스킴) : <%= @Response["scheme"] %></li>
-      <li>AppUseYN (앱사용유무) : <%= @Response["appUseYN"] %></li>
     </ul>
   </fieldset>
 </div>

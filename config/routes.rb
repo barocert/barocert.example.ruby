@@ -30,6 +30,10 @@ Rails.application.routes.draw do
   get "/NavercertExample/requestMultiSign" => 'navercert#requestMultiSign', via: [:get]
   get "/NavercertExample/getMultiSignStatus" => 'navercert#getMultiSignStatus', via: [:get]
   get "/NavercertExample/verifyMultiSign" => 'navercert#verifyMultiSign', via: [:get]
+  
+  get "/NavercertExample/requestCMS" => 'navercert#requestCMS', via: [:get]
+  get "/NavercertExample/getCMSStatus" => 'navercert#getCMSStatus', via: [:get]
+  get "/NavercertExample/verifyCMS" => 'navercert#verifyCMS', via: [:get]
 
   get "/PasscertExample/requestIdentity" => 'passcert#requestIdentity', via: [:get]
   get "/PasscertExample/getIdentityStatus" => 'passcert#getIdentityStatus', via: [:get]
