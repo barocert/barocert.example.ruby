@@ -346,8 +346,8 @@ class NavercertController < ApplicationController
     end
   end
 
-  # 전자서명(단건) 요청 후 반환받은 접수아이디로 인증 진행 상태를 확인합니다.
-  # https://developers.barocert.com/reference/naver/ruby/sign/api-single#GetSignStatus
+  # 자동이체 출금동의 요청 후 반환받은 접수아이디로 인증 진행 상태를 확인합니다.
+  # https://developers.barocert.com/reference/naver/ruby/cms/api#GetCMSStatus
   def getCMSStatus
 
     # 출금동의 요청시 반환받은 접수아이디
@@ -364,8 +364,8 @@ class NavercertController < ApplicationController
 
   # 완료된 전자서명을 검증하고 전자서명값(signedData)을 반환 받습니다.
   # 네이버 보안정책에 따라 검증 API는 1회만 호출할 수 있습니다. 재시도시 오류가 반환됩니다.
-  # 전자서명 완료일시 이후에 검증 API를 호출하면 오류가 반환됩니다.
-  # https://developers.barocert.com/reference/naver/ruby/sign/api-single#VerifySign
+  # 전자서명 만료일시 이후에 검증 API를 호출하면 오류가 반환됩니다.
+  # https://developers.barocert.com/reference/naver/ruby/cms/api#VerifyCMS
   def verifyCMS
 
     # 출금동의 요청시 반환받은 접수아이디
