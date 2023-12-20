@@ -53,7 +53,7 @@ class NavercertController < ApplicationController
       "expireIn" => 1000,
 
       # AppToApp 인증요청 여부
-      # true - AppToApp 인증방식, false - Talk Message 인증방식
+      # true - AppToApp 인증방식, false - 푸시(Push) 인증방식
       "appUseYN" => false,
       # ApptoApp 인증방식에서 사용
       # 모바일장비 유형('ANDROID', 'IOS'), 대문자 입력(대소문자 구분)
@@ -138,7 +138,7 @@ class NavercertController < ApplicationController
       # "token" => NCService._encrypt(NCService._sha256_base64url('전자서명(단건) 요청 원문')),
     
       # AppToApp 인증요청 여부
-      # true - AppToApp 인증방식, false - Talk Message 인증방식
+      # true - AppToApp 인증방식, false - 푸시(Push) 인증방식
       "appUseYN" => false,
       # ApptoApp 인증방식에서 사용
       # 모바일장비 유형('ANDROID', 'IOS'), 대문자 입력(대소문자 구분)
@@ -240,7 +240,7 @@ class NavercertController < ApplicationController
       ],
       
       # AppToApp 인증요청 여부
-      # true - AppToApp 인증방식, false - Talk Message 인증방식
+      # true - AppToApp 인증방식, false - 푸시(Push) 인증방식
       "appUseYN" => false,
       # ApptoApp 인증방식에서 사용
       # 모바일장비 유형('ANDROID', 'IOS'), 대문자 입력(대소문자 구분)
@@ -327,7 +327,7 @@ class NavercertController < ApplicationController
       "bankAccountBirthday" = NCService._encrypt('19700101'),    
 
       # AppToApp 인증요청 여부
-      # true - AppToApp 인증방식, false - Talk Message 인증방식
+      # true - AppToApp 인증방식, false - 푸시(Push) 인증방식
       "appUseYN" => false,
       # ApptoApp 인증방식에서 사용
       # 모바일장비 유형('ANDROID', 'IOS'), 대문자 입력(대소문자 구분)
