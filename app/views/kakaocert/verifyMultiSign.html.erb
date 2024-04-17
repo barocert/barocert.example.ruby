@@ -1,5 +1,5 @@
 <div id="content">
-  <p class="heading1">Barocert SDK Ruby On Rails Example</p>
+  <p class="heading1">Barocert Ruby On Rails Example</p>
   <br/>
   <fieldset class="fieldset1">
     <legend><%= request.env['PATH_INFO'] %></legend>
@@ -14,6 +14,10 @@
         </fieldset>
       <% end %>
       <li>Ci (연계정보) : <%= @Response['ci'] %></li>
+      <li>ReceiverName (수신자 성명) : <%= @Response['receiverName'] %></li>
+      <li>ReceiverYear (수신자 출생년도) : <%= @Response['receiverYear'] %></li>
+      <li>ReceiverDay (수신자 출생월일) : <%= @Response['receiverDay'] %></li>
+      <li>ReceiverHP (수신자 휴대폰번호) : <%= @Response['receiverHP'] %></li>
     </ul>
   </fieldset>
 </div>
