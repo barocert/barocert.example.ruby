@@ -2,7 +2,7 @@
 #
 # Barocert KAKAO API Ruby SDK Example
 #
-# 업데이트 일자 : 2024-04-17
+# 업데이트 일자 : 2024-06-30
 # 연동기술지원 연락처 : 1600-9854
 # 연동기술지원 이메일 : code@linkhubcorp.com
 #         
@@ -120,6 +120,10 @@ class KakaocertController < ApplicationController
   # https://developers.barocert.com/reference/kakao/ruby/sign/api-single#RequestSign
   def requestSign
 
+    file = File.open(File.join(Rails.root,"barocert.pdf"), "rb")
+		target = file.read
+		file.close
+
     sign = {
       
       # 수신자 휴대폰번호 - 11자 (하이픈 제외)
@@ -135,11 +139,15 @@ class KakaocertController < ApplicationController
       "extraMessage" => KCService._encrypt('전자서명(단건) 커스텀 메시지'),
       # 인증요청 만료시간 - 최대 1,000(초)까지 입력 가능
       "expireIn" => 1000,
+      # TEXT - 일반 텍스트, HASH - HASH 데이터, PDF - PDF 데이터
+      "tokenType" => 'TEXT',
       # 서명 원문 - 원문 2,800자 까지 입력가능
       "token" => KCService._encrypt('전자서명(단건) 요청 원문'),
       # 서명 원문 유형
-      # TEXT - 일반 텍스트, HASH - HASH 데이터
-      "tokenType" => 'TEXT',
+      # "tokenType" => 'PDF',
+      # 서명 원문 유형이 HASH인 경우, 원문은 SHA-256, Base64 URL Safe No Padding을 사용
+      # "token" => KCService._encrypt(KCService._sha256_base64url_file(target)),
+
       # AppToApp 인증요청 여부
       # true - AppToApp 인증방식, false - Talk Message 인증방식
       "appUseYN" => false,
@@ -195,6 +203,10 @@ class KakaocertController < ApplicationController
   # https://developers.barocert.com/reference/kakao/ruby/sign/api-multi#RequestMultiSign
   def requestMultiSign
 
+    file = File.open(File.join(Rails.root,"barocert.pdf"), "rb")
+		target = file.read
+		file.close
+
     multiSign = {
 
       # 수신자 휴대폰번호 - 11자 (하이픈 제외)
@@ -217,12 +229,16 @@ class KakaocertController < ApplicationController
           "signTitle" => "전자서명(복수) 서명 요청 제목 1",
           # 서명 원문 - 원문 2,800자 까지 입력가능  
           "token" => KCService._encrypt('전자서명(복수) 요청 원문 1'),
+          # 서명 원문 유형이 HASH인 경우, 원문은 SHA-256, Base64 URL Safe No Padding을 사용
+          # "token" => KCService._encrypt(KCService._sha256_base64url_file(target)),
         },
         {
           # 서명 요청 제목 - 최대 40자
           "signTitle" => "전자서명(복수) 서명 요청 제목 2",
           # 서명 원문 - 원문 2,800자 까지 입력가능
           "token" => KCService._encrypt('전자서명(복수) 요청 원문 2'),
+          # 서명 원문 유형이 HASH인 경우, 원문은 SHA-256, Base64 URL Safe No Padding을 사용
+          # "token" => KCService._encrypt(KCService._sha256_base64url_file(target)),
         },
       ],
       # 서명 원문 유형

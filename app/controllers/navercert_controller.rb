@@ -2,7 +2,7 @@
 #
 # Barocert NAVER API Ruby SDK Example
 #
-# 업데이트 일자 : 2024-04-17
+# 업데이트 일자 : 2024-06-30
 # 연동기술지원 연락처 : 1600-9854
 # 연동기술지원 이메일 : code@linkhubcorp.com
 #         
@@ -120,6 +120,10 @@ class NavercertController < ApplicationController
   # https://developers.barocert.com/reference/naver/ruby/sign/api-single#RequestSign
   def requestSign
 
+    file = File.open(File.join(Rails.root,"barocert.pdf"), "rb")
+		target = file.read
+		file.close
+
     sign = {
       
       # 수신자 휴대폰번호 - 11자 (하이픈 제외)
@@ -138,14 +142,14 @@ class NavercertController < ApplicationController
       # 인증요청 만료시간 - 최대 1,000(초)까지 입력 가능
       "expireIn" => 1000,
       # 서명 원문 유형
-      # TEXT - 일반 텍스트, HASH - HASH 데이터
+      # TEXT - 일반 텍스트, HASH - HASH 데이터, PDF - PDF 데이터
       "tokenType" => 'TEXT',
       # 서명 원문 - 원문 2,800자 까지 입력가능
       "token" => NCService._encrypt('전자서명(단건) 요청 원문'),
       # 서명 원문 유형
-      # "tokenType" => 'HASH',
+      # "tokenType" => 'PDF',
       # 서명 원문 유형이 HASH인 경우, 원문은 SHA-256, Base64 URL Safe No Padding을 사용
-      # "token" => NCService._encrypt(NCService._sha256_base64url('전자서명(단건) 요청 원문')),
+      # "token" => NCService._encrypt(NCService._sha256_base64url_file(target)),
     
       # AppToApp 인증요청 여부
       # true - AppToApp 인증방식, false - 푸시(Push) 인증방식
@@ -204,6 +208,10 @@ class NavercertController < ApplicationController
   # https://developers.barocert.com/reference/naver/ruby/sign/api-multi#RequestMultiSign
   def requestMultiSign
 
+    file = File.open(File.join(Rails.root,"barocert.pdf"), "rb")
+		target = file.read
+		file.close
+
     multiSign = {
 
       # 수신자 휴대폰번호 - 11자 (하이픈 제외)
@@ -232,9 +240,9 @@ class NavercertController < ApplicationController
           # 서명 원문 - 원문 2,800자 까지 입력가능  
           "token" => NCService._encrypt('전자서명(복수) 요청 원문 1'),
           # 서명 원문 유형
-          # "tokenType" => 'HASH',
+          # "tokenType" => 'PDF',
           # 서명 원문 유형이 HASH인 경우, 원문은 SHA-256, Base64 URL Safe No Padding을 사용
-          # "token" => NCService._encrypt(NCService._sha256_base64url('전자서명(단건) 요청 원문 1')),
+          # "token" => NCService._encrypt(NCService._sha256_base64url_file(target)),
         },
         {
           # 서명 원문 유형
@@ -243,9 +251,9 @@ class NavercertController < ApplicationController
           # 서명 원문 - 원문 2,800자 까지 입력가능
           "token" => NCService._encrypt('전자서명(복수) 요청 원문 2'),
           # 서명 원문 유형
-          # "tokenType" => 'HASH',
+          # "tokenType" => 'PDF',
           # 서명 원문 유형이 HASH인 경우, 원문은 SHA-256, Base64 URL Safe No Padding을 사용
-          # "token" => NCService._encrypt(NCService._sha256_base64url('전자서명(단건) 요청 원문 2')),
+          # "token" => NCService._encrypt(NCService._sha256_base64url_file(target)),
         },
       ],
       
@@ -326,15 +334,15 @@ class NavercertController < ApplicationController
       "expireIn" => 1000,
 
       # 청구기관명
-      "requestCorp" = NCService._encrypt('청구기관'),    
+      "requestCorp" => NCService._encrypt('청구기관'),    
       # 출금은행명
-      "bankName" = NCService._encrypt('출금은행'),    
+      "bankName" => NCService._encrypt('출금은행'),    
       # 출금계좌번호
-      "bankAccountNum" = NCService._encrypt('123-456-7890'),    
+      "bankAccountNum" => NCService._encrypt('123-456-7890'),    
       # 출금계좌 예금주명
-      "bankAccountName" = NCService._encrypt('홍길동'),    
+      "bankAccountName" => NCService._encrypt('홍길동'),    
       # 출금계좌 예금주 생년월일
-      "bankAccountBirthday" = NCService._encrypt('19700101'),    
+      "bankAccountBirthday" => NCService._encrypt('19700101'),    
 
       # AppToApp 인증요청 여부
       # true - AppToApp 인증방식, false - 푸시(Push) 인증방식
